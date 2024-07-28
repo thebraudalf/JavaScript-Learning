@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XMLHttpRequest</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    const requestUrl = 'https://api.github.com/users/hiteshchoudhary';
+
+    const xhr = new XMLHttpRequest();
+    // This method loads a specified resource into a new or existing browsing context. In parameter first give request in strings and give url in second 
+    xhr.open("GET", requestUrl);
+    // readystatechange event is used when the readyState attribute has changed.
+    xhr.onreadystatechange = function () {
+        // This property describes the loading state of the document
+        console.log(xhr.readyState);
+        if (xhr.readyState === 4) {
+            // JSON.parse() method is used to parse a string text as JSON
+            //  response property is used to get data as a response. This property can used to get response as a text, url, and html, etc. Like responseText. 
+            const data = JSON.parse(this.responseText);
+            console.log(typeof data); // object // Because JSON is a object
+            console.log(data.location); // India 
+        }
+    }
+
+xhr.send();
+
+</script>
+
+</html>

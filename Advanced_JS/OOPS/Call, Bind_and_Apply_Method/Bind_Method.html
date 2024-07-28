@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React</title>
+</head>
+<body>
+    <button>Clicked</button>
+</body>
+
+<script>
+    // bind() method helps an object which can borrow a method from another object.
+    // This creates a new function that, when called, calls this function with its "this" keyword set to the provided value, and if any other given sequences of arguments preceding the first argument are passed to the bind method then they are passed as an argument to the new function when the new function is called.
+
+    // With the use of bind() method 
+
+    // With new approach through react
+    class React {
+        constructor() {
+            this.library = "React";
+            this.server = "https://localhost:3000";
+
+            // bind() method is used to borrow 
+            document
+            .querySelector("button")
+            .addEventListener("click", this.handleClick.bind(this));
+        }
+
+        handleClick(){
+            console.log("Clicked"); // Clicked
+            console.log(this.server); // In browser https://localhost:3000
+        }
+    }
+
+    const app = new React();
+
+    // Without the use of bind() method with making of new object prototype method 
+    let nameObj = {
+        name: "braudalf"
+    }
+
+    let PrintName = {
+        name: "warewolf",
+        sayHi: function () {
+            console.log(`Hey! ${this.name}`);
+        }
+    }
+
+    // MyBind() method for binding 
+    Object.prototype.MyBind = function (bindObj) {
+
+        // Here "this" refers to sayHi method
+        bindObj.myMethod = this;
+        return function () {
+            bindObj.myMethod();
+        }
+    }
+
+    let testObj = PrintName.sayHi.MyBind(nameObj);
+    testObj();
+
+</script>
+
+</html>

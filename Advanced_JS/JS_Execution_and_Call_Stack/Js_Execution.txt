@@ -1,0 +1,74 @@
+Javascript Execution Context
+
+|JS Code| -> Global Execution Context (All this in "this" keyword) 
+
+-> Global Execution Context
+-> Function Execution Context
+-> Eval Execution Context (It can say a property of Global Object)
+
+Javascript Phases
+| JS Code | -> Memory Creation Phase
+| JS Code | -> Execution Phase
+
+Code Snippet to explain Javascript Phases
+*******************************************************************************
+let val1 = 10;
+let val2 = 5;
+Function addNum(num1, num2){
+   let total = num1 + num2;
+   return total;
+}
+let result1 = addNum(val1, val2);
+let result2 = addNum(10, 2);
+********************************************************************************
+
+Working of above Code Snippet
+     Global Execution (All this in "this" keyword)
+
+A. Memory Phase
+   val1 -> undefined
+   val2 -> undefined
+   addNum -> defination
+   result1 -> undefined
+   result2 -> undefined
+
+B. Execution Phase
+   val1 -> 10
+   val2 -> 5                ---------------------------------
+   addNum ->               |                                 |
+   result1 -> 15           |    New variable environment     |
+   result2 ->              |            +                    |  
+                           |    Execution Thread             |
+               <--         |                                 |
+                            ---------------------------------
+                                after all phases this will automatically deleted
+       Memory Phase
+       val1 -> undefined
+       val2 -> undefined
+       total -> undefined  
+
+       Execution Phase
+       num1 -> 10
+       num2 -> 5
+       total -> 15
+
+
+addNum)() in first Execution phase
+
+                            ---------------------------------
+                           |                                 |
+                           |    New variable environment     |
+                           |            +                    |  
+                           |    Execution Thread             |
+               <--         |                                 |
+                            ---------------------------------
+                              after all phases this will automatically deleted
+       Memory Phase
+       val1 -> undefined
+       val2 -> undefined
+       total -> undefined  
+
+       Execution Phase
+       num1 -> 10
+       num2 -> 5
+       total -> 15 (Now this move to Global Execution Context)

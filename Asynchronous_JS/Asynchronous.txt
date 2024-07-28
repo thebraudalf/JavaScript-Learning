@@ -1,0 +1,29 @@
+-> Javascript
+       -> Synchronous
+       -> Single Threaded
+ 
+          Default
+
+ Execution Context
+        -> Execute one line of code at a time
+        |                         
+        |--> Console.log - 1      each operation waits for the last one to
+        |--> Console.log - 2      to complete before execution.
+        |
+        |    _____________    ______________
+        |   |             |   |             |
+        .   | Call Stack  |   | Memory Heap |
+            |_____________|   |_____________|
+
+
+-> Blocking Code Vs Non - Blocking Code
+
+Blocking Code
+ -> Block the flow of program
+ -> Read file Synchronously
+
+Non - Blocking Code
+ -> Doesn't Block execution 
+ -> Read file Asynchronously
+
+ 

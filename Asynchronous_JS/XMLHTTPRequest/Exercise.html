@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hitesh Profile</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        main{
+            background-color: blueviolet;
+            margin: 0px 5rem;
+
+        }
+
+        .card{
+            margin-top: 6rem;
+            padding: 22px 22px;
+            display: flex;
+            flex-direction: column;
+            row-gap: 2rem;
+            justify-content: center;
+            text-align: center;
+        }
+
+        p{
+            font-size: 23px;
+        }
+
+        #btn{
+            align-self: center;
+            width: 5rem;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div class="card">
+            <div id="img"> </div>
+            <p id="name"> </p>
+           <p id="followers"> </p>
+           <button id="btn" onclick="true">Click for information</button>
+        </div>
+    </main>
+</body>
+
+<script>
+    const img = document.body.querySelector("#img");
+    const button = document.body.querySelector("#btn");
+    const name = document.body.querySelector("#name");
+    const followers = document.body.querySelector("#followers");  
+    const requestUrl = 'https://api.github.com/users/hiteshchoudhary';
+    
+
+    button.addEventListener("click", function (e) {
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", requestUrl);
+        xhr.onreadystatechange = function () {
+           console.log(xhr.readyState);
+           if (xhr.readyState === 4) {
+            const data = JSON.parse(this.responseText);
+
+            // Image Url
+            let imgUrl = data.avatar_url;
+            img.innerHTML = `<img src="${imgUrl}" alt="Hitesh Chaudhary" width="250px">`;
+
+            // User Name
+            let userName = data.name;
+            name.textContent = `Name: ${userName}`;
+
+            // Real Time Followers Count
+            let realTimeFollowers = data.followers;
+            followers.textContent = `Followers: ${realTimeFollowers}`;
+
+           }
+        }
+        xhr.send();
+    });
+</script>
+</html>

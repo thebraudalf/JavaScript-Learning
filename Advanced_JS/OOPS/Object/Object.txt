@@ -1,0 +1,11 @@
+By default, every thing in javascript is object.
+ 
+
+   Function -------|
+                   |
+                 Object ----------> Null
+                 | |
+     Array ------| |
+                   | 
+  String ----------|
+ 
