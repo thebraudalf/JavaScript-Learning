@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Picker</title>
+    <style>
+        :root{
+            --pink: #Ffc0cb;
+            --red: #Ff0000;
+            --blue: #0000ff;
+            --white: #FFFFFF;
+            --yellow: #FFFF00;
+        }
+
+        .container{
+            display: flex;
+            justify-content: center;
+            column-gap: 23px;
+        }
+        
+        .btn{
+            margin-top: 12rem;
+            width: 100px;
+            height: 100px;
+            border: 2px solid black;    
+
+        }
+        
+        #pink{
+            background-color: var(--pink);
+        }
+
+        #red{
+            background-color: var(--red);
+        }
+
+        #blue{
+            background-color: var(--blue);
+        }
+
+        #white{
+            background-color: var(--white);
+        }
+
+        #yellow{
+            background-color: var(--yellow);
+        }
+
+        h2{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button class="btn" id="pink"></button>
+        <button class="btn" id="red"></button>
+        <button class="btn" id="blue"></button>
+        <button class="btn" id="white"></button>
+        <button class="btn" id="yellow"></button>
+    </div>
+    <div><h2>Click to pick color</h2></div>
+
+    <script src="color_picker.js"></script>
+</body>
+</html>
