@@ -1,0 +1,51 @@
+<!-- Explaining Closures with an real world example -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closures with example</title>
+</head>
+
+<body>
+    <button type="button" id="red" onclick="getColor()">Red</button>
+    <button type="button" id="yellow" onclick="getColor()">Yellow</button>
+
+    <script>
+
+        // If we have limited elements then we don't use closures
+        // document.getElementById("red").onclick = function getColor() {
+        //     document.body.style.backgroundColor = "red";
+        // }
+
+        // document.getElementById("yellow").onclick = function getColor() {
+        //     document.body.style.backgroundColor = "yellow";
+        // }
+
+
+        // If we have more than two elements then we have to use closures 
+        document.getElementById("red").onclick = getColor("red");
+        document.getElementById("yellow").onclick = getColor("yellow");
+
+
+        function getColor(color) {
+
+            // Two ways to pass reference of nested function through return
+            // First way 
+             return function setColor() {
+                document.body.style.backgroundColor = `${color}`;
+            }
+
+            // Second way
+            // return setColor;
+        }
+
+        // Note: If we don't use return we can't use nested function
+
+    </script>
+
+</body>
+
+</html>
